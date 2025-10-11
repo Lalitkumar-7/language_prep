@@ -1,0 +1,5 @@
+1. clone the githun repository you want  to work in int eg. git clone https://github.com/Lalitkumar-7/language_prep.git
+
+2. create file and add it , and commit it , eg. git add run.html,    git commit -m "run.html added ",  
+
+3. run the push command to push the files into github , git push origin main 
