@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Admin Portal</title>
+</head>
+<body>
+    <h1>Admin User Management</h1>
+    <input type="text" id="search" placeholder="Search User">
+    <button onclick="searchUsers()">Search</button>
+    <table id="userTable">
+        <thead><tr><th>ID</th><th>Name</th><th>Email</th><th>Actions</th></tr></thead>
+        <tbody></tbody>
+    </table>
+
+    <script>
+        function fetchUsers(query = '') {
+            fetch(`api.php/users?search=${query}`)
+                .then(res => res.json())
+                .then(data => {
+                    let tbody = document.querySelector('#userTable tbody');
+                    tbody.innerHTML = '';
+                    data.forEach(user => {
+                        let row = `<tr>
+                            <td>${user.id}</td>
+                            <td>${user.name}</td>
+                            <td>${user.email}</td>
+                            <td>
+                                <button onclick="approveUser(${user.id})">Approve</button>
+                                <button onclick="blockUser(${user.id})">Block</button>
+                                <button onclick="deleteUser(${user.id})">Delete</button>
+                            </td>
+                        </tr>`;
+                        tbody.innerHTML += row;
+                    });
+                });
+        }
+
+        function searchUsers() {
+            let query = document.getElementById('search').value;
+            fetchUsers(query);
+        }
+
+        function approveUser(id) {
+            fetch(`api.php/users/${id}`, {
+                method: 'PUT',
+                body: JSON.stringify({action: 'approve'})
+            }).then(() => fetchUsers());
+        }
+
+        function blockUser(id) {
+            fetch(`api.php/users/${id}`, {
+                method: 'PUT',
+                body: JSON.stringify({action: 'block'})
+         
