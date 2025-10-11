@@ -1,0 +1,365 @@
+
+### Practical 1: Draw and explain architecture of the web browser. List and explain various HTML request and response headers.
+
+#### Architecture of the Web Browser
+A web browser is a software application that retrieves, presents, and traverses information resources on the World Wide Web. Its architecture typically consists of the following components:
+
+1.  User Interface (UI) : The front-end layer where users interact, including the address bar, back/forward buttons, bookmarks, and the rendering area for web pages.
+2.  Browser Engine : Acts as an intermediary between the UI and the rendering engine, handling actions like page loading, reloading, and navigation.
+3.  Rendering Engine : Responsible for parsing HTML/CSS and displaying the content. Examples include Blink (used in Chrome), Gecko (Firefox), and WebKit (Safari). It interprets HTML to build the DOM (Document Object Model), CSS to style it via CSSOM, and combines them into a render tree for painting on the screen.
+4.  Networking : Handles HTTP/HTTPS requests, DNS resolution, and data transfer between the browser and servers.
+5.  JavaScript Interpreter : Executes JavaScript code, often using engines like V8 (Chrome) or SpiderMonkey (Firefox).
+6.  UI Backend : Draws basic widgets like buttons and windows using OS-specific APIs.
+7.  Data Storage : Manages cookies, local storage, session storage, and cache for persistent data.
+
+A simplified "drawing" (text-based diagram) of the architecture:
+
+```
++-------------------+
+|    User Interface |
++-------------------+
+          |
+          v
++-------------------+
+|   Browser Engine  |
++-------------------+
+          |
+          +----------------> +-------------------+
+          |                  |   Networking      |
+          |                  +-------------------+
+          v                            ^
++-------------------+                  |
+| Rendering Engine  | <----------------+
++-------------------+
+          |
+          +----------------> +-------------------+
+          |                  | JavaScript Engine |
+          |                  +-------------------+
+          v
++-------------------+
+|    UI Backend     |
++-------------------+
+          |
+          v
++-------------------+
+|   Data Storage    |
++-------------------+
+```
+
+#### HTTP Request and Response Headers
+HTTP headers are key-value pairs sent between client (browser) and server to provide metadata about the request/response.
+
+ Common Request Headers: 
+-  Host : Specifies the domain name of the server (e.g., `Host: example.com`).
+-  User-Agent : Identifies the browser and OS (e.g., `User-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64)`).
+-  Accept : Indicates acceptable content types (e.g., `Accept: text/html, application/xhtml+xml`).
+-  Accept-Language : Preferred languages (e.g., `Accept-Language: en-US,en;q=0.9`).
+-  Authorization : Credentials for authentication (e.g., `Authorization: Basic YWxhZGRpbjpvcGVuc2VzYW1l`).
+-  Cookie : Sends stored cookies to the server (e.g., `Cookie: sessionid=abc123`).
+-  Referer : URL of the page making the request (e.g., `Referer: https://example.com/page`).
+
+ Common Response Headers: 
+-  Content-Type : Specifies the MIME type of the response body (e.g., `Content-Type: text/html; charset=UTF-8`).
+-  Content-Length : Size of the response body in bytes (e.g., `Content-Length: 348`).
+-  Set-Cookie : Instructs the browser to store cookies (e.g., `Set-Cookie: sessionid=abc123; Max-Age=3600`).
+-  Location : Used in redirects (e.g., `Location: https://example.com/newpage`).
+-  Server : Identifies the server software (e.g., `Server: Apache/2.4.41`).
+-  Cache-Control : Directives for caching (e.g., `Cache-Control: max-age=3600`).
+-  ETag : A validator tag for caching (e.g., `ETag: "33a64df551425fcc55e4d42a148795d9f25f89d4"`).
+
+### Practical 2
+#### a. Create your resume using HTML (Suggested sections: Personal Information, Educational Information, Professional Skills, Experience, Achievements, Hobbies). Experiment with text, colors, link and lists.
+
+```html
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>My Resume</title>
+    <style>
+        body { font-family: Arial, sans-serif; background-color: #f0f0f0; color: #333; }
+        h1 { color: #007bff; }
+        h2 { color: #28a745; }
+        a { color: #dc3545; text-decoration: none; }
+        a:hover { text-decoration: underline; }
+        ul { list-style-type: square; color: #6f42c1; }
+    </style>
+</head>
+<body>
+    <h1>My Resume</h1>
+    
+    <h2>Personal Information</h2>
+    <p>Name: John Doe</p>
+    <p>Email: <a href="mailto:johndoe@example.com">johndoe@example.com</a></p>
+    <p>Phone: (123) 456-7890</p>
+    <p>LinkedIn: <a href="https://linkedin.com/in/johndoe">linkedin.com/in/johndoe</a></p>
+    
+    <h2>Educational Information</h2>
+    <ul>
+        <li>Bachelor's in Computer Science, XYZ University, 2018-2022</li>
+        <li>High School Diploma, ABC School, 2016-2018</li>
+    </ul>
+    
+    <h2>Professional Skills</h2>
+    <ul>
+        <li>HTML, CSS, JavaScript</li>
+        <li>PHP, MySQL</li>
+        <li>Problem Solving</li>
+    </ul>
+    
+    <h2>Experience</h2>
+    <p>Web Developer at Tech Corp, 2022-Present</p>
+    <ul>
+        <li>Developed responsive websites</li>
+        <li>Maintained backend services</li>
+    </ul>
+    
+    <h2>Achievements</h2>
+    <ul>
+        <li>Won Hackathon 2021</li>
+        <li>Certified Web Developer</li>
+    </ul>
+    
+    <h2>Hobbies</h2>
+    <ul>
+        <li>Reading</li>
+        <li>Traveling</li>
+        <li>Coding side projects</li>
+    </ul>
+</body>
+</html>
+```
+
+#### b. Create your class time table using table tag, experiment with rowspan, colspan, cellspacing and cellpadding attributes.
+
+```html
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Class Timetable</title>
+    <style>
+        table { border-collapse: collapse; width: 100%; }
+        th, td { border: 1px solid #000; text-align: center; padding: 10px; }
+        th { background-color: #007bff; color: white; }
+    </style>
+</head>
+<body>
+    <h1>Class Timetable</h1>
+    <table cellspacing="5" cellpadding="10">
+        <tr>
+            <th>Time</th>
+            <th>Monday</th>
+            <th>Tuesday</th>
+            <th>Wednesday</th>
+            <th>Thursday</th>
+            <th>Friday</th>
+        </tr>
+        <tr>
+            <td>9:00 - 10:00</td>
+            <td>Math</td>
+            <td rowspan="2">Web Dev Lab</td>
+            <td>Physics</td>
+            <td>Math</td>
+            <td>Chemistry</td>
+        </tr>
+        <tr>
+            <td>10:00 - 11:00</td>
+            <td>English</td>
+            <td>History</td>
+            <td>English</td>
+            <td>Physics</td>
+        </tr>
+        <tr>
+            <td>11:00 - 12:00</td>
+            <td colspan="5">Break</td>
+        </tr>
+        <tr>
+            <td>12:00 - 1:00</td>
+            <td>History</td>
+            <td>Chemistry</td>
+            <td>Math</td>
+            <td>Web Dev</td>
+            <td>English</td>
+        </tr>
+    </table>
+</body>
+</html>
+```
+
+### Practical 3: Design static web pages for your college containing a description of the courses, departments, faculties, library etc. Provide links for navigation among pages. Ensure that at least one page should contain audios and videos (using HTML5 audio and video tags). Also provide link for navigation between pages.
+
+I'll create a simple multi-page site: index.html (home), courses.html, departments.html, faculties.html, library.html. Library page will have audio/video.
+
+ index.html 
+```html
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>College Home</title>
+</head>
+<body>
+    <h1>Welcome to XYZ College</h1>
+    <nav>
+        <a href="courses.html">Courses</a> |
+        <a href="departments.html">Departments</a> |
+        <a href="faculties.html">Faculties</a> |
+        <a href="library.html">Library</a>
+    </nav>
+    <p>This is the home page of XYZ College.</p>
+</body>
+</html>
+```
+
+ courses.html 
+```html
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Courses</title>
+</head>
+<body>
+    <h1>Courses</h1>
+    <nav>
+        <a href="index.html">Home</a> | 
+        <a href="departments.html">Departments</a> |
+        <a href="faculties.html">Faculties</a> |
+        <a href="library.html">Library</a>
+    </nav>
+    <p>We offer courses in Computer Science, Engineering, Arts, etc.</p>
+</body>
+</html>
+```
+
+ departments.html 
+```html
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Departments</title>
+</head>
+<body>
+    <h1>Departments</h1>
+    <nav>
+        <a href="index.html">Home</a> | 
+        <a href="courses.html">Courses</a> |
+        <a href="faculties.html">Faculties</a> |
+        <a href="library.html">Library</a>
+    </nav>
+    <p>Departments include IT, Mechanical, Electrical.</p>
+</body>
+</html>
+```
+
+ faculties.html 
+```html
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Faculties</title>
+</head>
+<body>
+    <h1>Faculties</h1>
+    <nav>
+        <a href="index.html">Home</a> | 
+        <a href="courses.html">Courses</a> |
+        <a href="departments.html">Departments</a> |
+        <a href="library.html">Library</a>
+    </nav>
+    <p>Our faculties are highly qualified experts.</p>
+</body>
+</html>
+```
+
+ library.html 
+```html
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Library</title>
+</head>
+<body>
+    <h1>Library</h1>
+    <nav>
+        <a href="index.html">Home</a> | 
+        <a href="courses.html">Courses</a> |
+        <a href="departments.html">Departments</a> |
+        <a href="faculties.html">Faculties</a>
+    </nav>
+    <p>The library has thousands of books and digital resources.</p>
+    <h2>Audio Resource</h2>
+    <audio controls>
+        <source src="https://example.com/audio.mp3" type="audio/mpeg">
+        Your browser does not support the audio element.
+    </audio>
+    <h2>Video Resource</h2>
+    <video width="320" height="240" controls>
+        <source src="https://example.com/video.mp4" type="video/mp4">
+        Your browser does not support the video tag.
+    </video>
+</body>
+</html>
+```
+(Note: Replace audio/video src with actual URLs for real use.)
+
+### Practical 4: Design a static website on your interested Theme (place, food, culture and heritage, etc.) It should have at least four pages with an attractive background color, text color, an Image, font etc. (use internal CSS). Use frame and divide the page into two parts with Navigation links on left hand side of page (width=20%) and content page on right hand side of page (width = 80%). Use proper navigation links.
+
+Theme: Indian Culture and Heritage. Pages: index.html (home), food.html, places.html, festivals.html.
+
+Since frameset is deprecated, I'll use CSS flexbox for layout to simulate frames.
+
+ index.html 
+```html
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Indian Culture and Heritage - Home</title>
+    <style>
+        body { font-family: 'Arial', sans-serif; background-color: #ffcc99; color: #333; margin: 0; display: flex; }
+        nav { width: 20%; background-color: #cc6600; padding: 10px; height: 100vh; }
+        nav a { display: block; color: white; text-decoration: none; margin: 10px 0; }
+        main { width: 80%; padding: 20px; }
+        img { max-width: 100%; height: auto; }
+    </style>
+</head>
+<body>
+    <nav>
+        <a href="index.html">Home</a>
+        <a href="food.html">Food</a>
+        <a href="places.html">Places</a>
+        <a href="festivals.html">Festivals</a>
+    </nav>
+    <main>
+        <h1>Indian Culture and Heritage</h1>
+        <p>Welcome to explore India's rich heritage.</p>
+        <img src="https://example.com/india-flag.jpg" alt="India Flag">
+    </main>
+</body>
+</html>
+```
+
+ food.html 
+```html
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Indian Food</title>
+    <style>
+        body { font-family: 'Arial', sans-serif; background-color: #ffcc99; color: #333; margin: 0; display: flex; }
+        nav 
